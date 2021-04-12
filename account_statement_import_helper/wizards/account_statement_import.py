@@ -16,6 +16,7 @@ class AccountStatementImport(models.TransientModel):
     _inherit = "account.statement.import"
 
     def _match_journal(self, account_number, currency):
+        journal = self.env["account.journal"]
         sanitized_account_number = self._sanitize_account_number(account_number)
         fin_journals = self.env["account.journal"].search(
             [
